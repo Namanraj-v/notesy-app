@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 
+
 // Load environment variables
 dotenv.config();
 
@@ -22,8 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/notes', require('./routes/notes'));
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
 
 // Basic route for testing
 app.get('/', (req, res) => {
